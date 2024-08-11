@@ -1,0 +1,14 @@
+[package]
+name = "log_injestor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dotenv = "0.15"
+config = "0.13"
+serde = { version = "1.0", features = ["derive"] }
+structopt = "0.3"
+
+[lib]
+name = "log_injestor"
+path = "src/lib.rs"
