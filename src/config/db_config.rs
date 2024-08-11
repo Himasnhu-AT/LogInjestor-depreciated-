@@ -1,19 +1,20 @@
 use structopt::StructOpt;
 
+// Add defaults based on docker file, or respective file
+
 #[derive(Debug, StructOpt)]
-pub struct Config {
+pub struct DbConfig {
     #[structopt(long, default_value = "8080")]
     pub api_port: u16,
 
-    #[structopt(long, default_value = "info")]
-    pub log_level: String,
-
-    // can be empty
     #[structopt(long, default_value = "")]
     pub database_url_sql: String,
+
+    #[structopt(long)]
+    pub auth_key: String,
 }
 
-impl Config {
+impl DbConfig {
     pub fn from_env() -> Self {
         dotenv::dotenv().ok();
         Self {
@@ -21,16 +22,16 @@ impl Config {
                 .expect("API_PORT must be set")
                 .parse()
                 .expect("API_PORT must be a number"),
-            log_level: std::env::var("LOG_LEVEL").expect("LOG_LEVEL must be set"),
-            database_url_sql: std::env::var("DATABASE_URL_SQL").unwrap_or_default(),
+            database_url_sql: std::env::var("DATABASE_URL_SQL").expect("DataBase URL must be Set"),
+            auth_key: std::env::var("AUTH_KEY").expect("AUTH_KEY must be set"),
         }
     }
 
-    pub fn default() -> Self {
+    pub fn default(auth_key: &str) -> Self {
         Self {
-            api_port: 8080,
-            log_level: "info".to_string(),
+            api_port: "8080".parse().unwrap(),
             database_url_sql: "".to_string(),
+            auth_key: auth_key.to_string(),
         }
     }
 }

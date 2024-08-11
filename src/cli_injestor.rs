@@ -1,11 +1,11 @@
-use config::Config;
+use crate::config::cli_config::CliConfig;
 
 pub struct CliInjestor {
-    config: Config,
+    config: CliConfig,
 }
 
 impl CliInjestor {
-    pub fn new(config: Config) -> Self {
+    pub fn new(config: CliConfig) -> Self {
         Self { config }
     }
 

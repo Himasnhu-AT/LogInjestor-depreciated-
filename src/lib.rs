@@ -1,5 +1,12 @@
-pub mod config;
+pub mod cli_injestor;
+pub mod logger;
 
-// LogIngestor divided in two parts:
-//  1. CliInjestor, show logs in terminal
-//  2. DbIngestor, store logs in database
+// Inside the config folder
+pub mod config {
+    pub mod cli_config;
+    pub mod db_config;
+}
+
+// LogIngestor divided into two parts:
+//  1. CliInjestor: Shows logs in the terminal
+//  2. DbIngestor: Stores logs in the database
