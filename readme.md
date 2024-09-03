@@ -1,5 +1,9 @@
 # Log Injestor
 
+> [!IMPORTANT]
+> Depreciated
+> Transferred to [Admin Nexus](https://github.com/Himasnhu-AT/adminNexus)
+
 ## Description
 
 This is a simple log injestor that have three main components:
